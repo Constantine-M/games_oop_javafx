@@ -11,6 +11,9 @@ public class BishopBlack implements Figure {
         position = ps;
     }
 
+    /**
+     * Метод используется для получения позиции фигуры на поле.
+     */
     @Override
     public Cell position() {
         return position;
@@ -27,6 +30,10 @@ public class BishopBlack implements Figure {
         return false;
     }
 
+    /**
+     * Этот метод создаст объект класса с позицией dest.
+     * @param dest позиция клетки
+     */
     @Override
     public Figure copy(Cell dest) {
         return new BishopBlack(dest);
