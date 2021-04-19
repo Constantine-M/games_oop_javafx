@@ -41,6 +41,11 @@ public final class Chess extends Application {
         return rect;
     }
 
+    /**
+     * Если пользователь выполняет невозможные действия, то класс Logic выкидывает исключения.
+     * А обрабатываются эти исключения в классе Chess.
+     * Такой подход позволяет добавить сценарии тестов Logic для исключительных ситуаций.
+     */
     private Rectangle buildFigure(int x, int y, int size, String image) {
         Rectangle rect = new Rectangle();
         rect.setX(x);

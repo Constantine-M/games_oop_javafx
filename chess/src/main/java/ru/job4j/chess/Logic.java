@@ -40,7 +40,7 @@ public final class Logic {
         for (int index = 0; index < steps.length; index++) {
             for (int i = 0; i < figures.length; i++) {
                 if (figures[i] != null && figures[i].position().equals(steps[index])) {
-                    throw new OccupiedCellException();
+                    throw new OccupiedCellException("Ячейка занята.");
                 }
             }
         }
@@ -59,6 +59,6 @@ public final class Logic {
                 return index;
             }
         }
-        throw new FigureNotFoundException();
+        throw new FigureNotFoundException("Фигуры нет на клетке.");
     }
 }
