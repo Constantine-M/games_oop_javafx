@@ -15,6 +15,14 @@ public final class Logic {
         figures[index++] = figure;
     }
 
+    /**
+     * 1.int index = тут по объекту типа Cell source в массиве figures находим объект типа Figure.
+     * Он возвращает индекс ячейки или выкидывает исключение. Исключение заложено внутри метода findBy.
+     * 2.Cell[] steps = тут если объект найден, то нужно получить его ходы до клетки Cell dest.
+     * Это нужно сделать через метод way объекта Figure.
+     * 3.figures[index] = тут нужно в массив figures в позицию, полученную в пункте 1,
+     * записать новый объект, полученный из метода figure.copy.
+     */
     public void move(Cell source, Cell dest)
             throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
         int index = findBy(source);
@@ -23,7 +31,19 @@ public final class Logic {
         figures[index] = figures[index].copy(dest);
     }
 
+    /**
+     * В данном методе проверяем, что массив клеток от метода way не заполнен другими объектами класса Figure.
+     * Тем самым проверяем, нет ли других фигур на нашем пути (на пути прохождения слона именно).
+     * @param steps массив клеток, который получили в методе way
+     */
     private boolean free(Cell[] steps) throws OccupiedCellException {
+        for (int index = 0; index < steps.length; index++) {
+            for (int i = 0; i < figures.length; i++) {
+                if (figures[i] != null && figures[i].position().equals(steps[index])) {
+                    throw new OccupiedCellException();
+                }
+            }
+        }
         return true;
     }
 
