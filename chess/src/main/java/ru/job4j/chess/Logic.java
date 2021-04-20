@@ -37,9 +37,9 @@ public final class Logic {
      * @param steps массив клеток, который получили в методе way
      */
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        for (int index = 0; index < steps.length; index++) {
-            for (int i = 0; i < figures.length; i++) {
-                if (figures[i] != null && figures[i].position().equals(steps[index])) {
+        for (Figure figure : figures) {
+            for (Cell step : steps) {
+                if (figure != null && figure.position().equals(step)) {
                     throw new OccupiedCellException("Ячейка занята.");
                 }
             }
